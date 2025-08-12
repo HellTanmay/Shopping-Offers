@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-    <main className="p-6 max-w-7xl mx-auto">
+    <main className="p-6 max-w-7xl mx-auto bg-amber-50">
       <header className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl font-semibold">Cards Gallery</h1>
 
