@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 
+import { Link } from 'react-router';
+
+
 const Post = () => {
     const sampleItems = [
     {
@@ -92,6 +95,9 @@ const Post = () => {
               </button>
             )}
           </div>
+
+          <Link to="/addPost">Add Post</Link>
+
         </div>
       </header>
 
