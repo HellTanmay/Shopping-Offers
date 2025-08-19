@@ -1,59 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offer Form</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-
-  <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
-    <h2 class="text-2xl font-bold text-center mb-6">create post</h2>
-
-    <form id="offerForm" class="space-y-4">
-      <!-- Title -->
-      <div>
-        <label class="block text-sm font-medium mb-1">Title</label>
-        <input type="text" id="title" name="title" 
-          class="w-full border rounded-xl p-2 focus:ring focus:ring-blue-300" 
-          placeholder="Enter offer title" required>
-      </div>
-
-      <!-- Description -->
-      <div>
-        <label class="block text-sm font-medium mb-1">Description</label>
-        <textarea id="description" name="description" rows="3" 
-          class="w-full border rounded-xl p-2 focus:ring focus:ring-blue-300"
-          placeholder="Enter offer details" required></textarea>
-      </div>
-
-      <!-- Image Upload -->
-      <div>
-        <label class="block text-sm font-medium mb-1">Image</label>
-        <input type="file" id="image" name="image" 
-          class="w-full border rounded-xl p-2" accept="image/*" required>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" 
-        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-xl shadow">
-        Submit
-      </button>
-    </form>
-  </div>
-
-  <script>
-    document.getElementById("offerForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const title = document.getElementById("title").value;
-      const description = document.getElementById("description").value;
-      const image = document.getElementById("image").files[0];
-
-      console.log({ title, description, image });
-      alert("Form submitted! Check console for data.");
-    });
-  </script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
