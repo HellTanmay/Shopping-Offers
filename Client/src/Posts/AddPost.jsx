@@ -2,6 +2,7 @@ import React from 'react'
 
 const AddPost = () => {
   return (
+
     <div className='flex justify-center '>
       <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
     <h2 class="text-2xl font-bold text-center mb-6">create post</h2>
@@ -39,6 +40,7 @@ const AddPost = () => {
   </div>
     </div>
     
+
   )
 }
 
