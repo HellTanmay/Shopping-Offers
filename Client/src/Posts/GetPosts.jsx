@@ -106,7 +106,7 @@ const Post = () => {
                   <div className="mt-2 flex items-center justify-between">
                     
                     <div className="flex items-center gap-2">
-                      <button className="px-3 py-1 text-sm rounded-md bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300">View</button>
+                      <Link to={`/getPost/${item.id}`} className="px-3 py-1 text-sm rounded-md bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300">View</Link>
                       
                     </div>
                   </div>
