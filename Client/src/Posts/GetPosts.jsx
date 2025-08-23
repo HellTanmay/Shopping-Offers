@@ -25,7 +25,7 @@ const Post = () => {
   return (
    <main className="p-6 max-w-7xl mx-auto">
       <header className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl font-semibold">Blogs</h1>
+        <h1 className="text-2xl font-semibold">Infogram</h1>
 
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex gap-2">
