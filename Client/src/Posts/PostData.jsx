@@ -5,6 +5,7 @@ const PostData = [
           title: "Mountain Sunset",
           description: "Nature is the living canvas of our world, filled with endless beauty and harmony.",
           tag: "Nature",
+          date:"12-03-2025",
           img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=60"
         },
         {
@@ -12,13 +13,16 @@ const PostData = [
           title: "City Lights",
           description: "Night skyline with sparkling city lights.",
           tag: "Cities",
+          date:"22-06-2025",
           img: "https://images.theconversation.com/files/149162/original/image-20161208-18046-116xg09.jpg?ixlib=rb-4.1.0&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip"
+
         },
         {
           id: 3,
           title: "Cozy Workspace",
           description: "A neat desk setup to keep you productive and comfortable.",
           tag: "Work",
+          date:"30-04-2025",
           img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=60"
         },
         {
@@ -26,6 +30,7 @@ const PostData = [
           title: "Forest Path",
           description: "Walk through the calm and quiet of the woods.",
           tag: "Nature",
+          date:"10-08-2025",
           img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=60"
         },
         {
@@ -33,6 +38,7 @@ const PostData = [
           title: "Beach Vibes",
           description: "Sun, sand and waves — the perfect weekend escape.",
           tag: "Travel",
+          date:"12-07-2025",
           img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=60"
         },
         {
