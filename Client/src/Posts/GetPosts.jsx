@@ -101,6 +101,7 @@ const Post = () => {
 
                 <div className="p-4 flex flex-col gap-3">
                   <h2 className="text-lg font-semibold leading-snug">{item.title}</h2>
+                      <p className='font-light text-xs'>{item.date}</p>
                   <p className="text-sm text-gray-600 line-clamp-3">{item.description}</p>
 
                   <div className="mt-2 flex items-center justify-between">
