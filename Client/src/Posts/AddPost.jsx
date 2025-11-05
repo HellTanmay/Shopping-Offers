@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const AddPost = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [image, setImage] = useState(null); // Changed to null for file object
-  const [tag, setTag] = useState([]); // Changed to array for multiple tags
+  const [image, setImage] = useState(null); 
+  const [tag, setTag] = useState([]); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,8 +13,8 @@ const AddPost = () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', desc);
-    formData.append('image', image); // File object
-    formData.append('tags', tag.join(',')); // Send tags as comma-separated string
+    formData.append('image', image); 
+    formData.append('tags', tag.join(',')); 
 
     try {
       const response = await fetch('http://localhost:5000/add-post', {

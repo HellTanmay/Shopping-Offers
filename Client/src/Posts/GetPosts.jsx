@@ -1,19 +1,48 @@
-
-import { useState } from 'react'
-import PostData from './PostData';
-import { Link } from 'react-router';
-
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router'; // Ensure react-router-dom is installed
 
 const Post = () => {
-    
-
-  const items =PostData;
-
+  const [items, setItems] = useState([]); // State for fetched posts
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("All");
 
+  // Fetch posts from backend on component mount
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/posts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+        const data = await response.json();
+        
+        // Map MongoDB data to match your UI structure
+        const mappedData = data.map((post) => ({
+          id: post._id, // Use _id as id
+          title: post.title,
+          description: post.description,
+          img: `http://localhost:5000/${post.image}`, // Full URL for image (assuming static serving)
+          tag: post.tags.length > 0 ? post.tags[0] : 'Uncategorized', // Use first tag or default
+          date: new Date(post.createdAt).toLocaleDateString(), // Format createdAt as date string
+        }));
+        
+        setItems(mappedData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []); // Empty dependency array: fetch once on mount
+
+  // Derive tags from fetched items
   const tags = ["All", ...Array.from(new Set(items.map((i) => i.tag)))];
 
+  // Filter logic (same as before)
   const filtered = items.filter((it) => {
     const matchesTag = activeTag === "All" || it.tag === activeTag;
     const matchesQ = [it.title, it.description, it.tag]
@@ -22,8 +51,18 @@ const Post = () => {
       .includes(query.toLowerCase());
     return matchesTag && matchesQ;
   });
+
+  // Loading and error handling
+  if (loading) {
+    return <div className="p-6 max-w-7xl mx-auto text-center">Loading posts...</div>;
+  }
+
+  if (error) {
+    return <div className="p-6 max-w-7xl mx-auto text-center text-red-500">Error: {error}</div>;
+  }
+
   return (
-   <main className="p-6 max-w-7xl mx-auto">
+    <main className="p-6 max-w-7xl mx-auto">
       <header className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl font-semibold">Infogram</h1>
 
@@ -58,12 +97,10 @@ const Post = () => {
                 Clear
               </button>
             )}
-
           </div>
-          <div >
-          <Link className='bg-indigo-600 p-2 text-white rounded-2xl hover:bg-indigo-700' to="/addPost">Add Post</Link>
+          <div>
+            <Link className='bg-indigo-600 p-2 text-white rounded-2xl hover:bg-indigo-700' to="/addPost">Add Post</Link>
           </div>
-
         </div>
       </header>
 
@@ -101,14 +138,12 @@ const Post = () => {
 
                 <div className="p-4 flex flex-col gap-3">
                   <h2 className="text-lg font-semibold leading-snug">{item.title}</h2>
-                      <p className='font-light text-xs'>{item.date}</p>
+                  <p className='font-light text-xs'>{item.date}</p>
                   <p className="text-sm text-gray-600 line-clamp-3">{item.description}</p>
 
                   <div className="mt-2 flex items-center justify-between">
-                    
                     <div className="flex items-center gap-2">
                       <Link to={`/getPost/${item.id}`} className="px-3 py-1 text-sm rounded-md bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300">View</Link>
-                      
                     </div>
                   </div>
                 </div>
@@ -120,7 +155,7 @@ const Post = () => {
 
       <footer className="mt-8 text-sm text-gray-500">Showing <strong>{filtered.length}</strong> of {items.length} cards</footer>
     </main>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

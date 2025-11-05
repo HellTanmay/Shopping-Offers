@@ -84,7 +84,34 @@ app.post('/add-post', upload.single('image'), async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+app.get('/posts', async (req, res) => {
+  try {
+    const posts = await Post.find(); // Fetch all posts
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch posts' });
+  }
+});
 
+// ... (your existing code)
+
+// GET Route to Fetch a Single Post by ID
+app.get('/posts/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id); // Fetch post by _id
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+    res.status(200).json(post);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch post' });
+  }
+});
+
+// ... (rest of your server code) 
 // Start Server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
