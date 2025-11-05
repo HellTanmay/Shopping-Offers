@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "69084b2227ea554f56c61fbc"
+  },
+  "title": "Json/Bson",
+  "description": "Json has enhanced version bson",
+  "image": "uploads\\1762151202516.jpg",
+  "tags": [
+    "cities",
+    "work"
+  ],
+  "createdAt": {
+    "$date": "2025-11-03T06:26:42.541Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T06:26:42.541Z"
+  },
+  "__v": 0
+}]
